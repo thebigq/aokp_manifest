@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!--
+    Note the latest version of 'repo' complains that local_manifest.xml is
+    deprecated and directs the user to put local manifests in a directory
+    named local_manifests.  Unfortunately, this seems broken at the moment
+    due to an error in the code.
+
+    In manifest_xml.py we see this basic structure:
+
+    for local_file in sorted(os.listdir(local_dir)):
+      nodes.append(self._ParseManifestXml(local_file, self.repodir))
+
+    On my system, os.listdir() returns a filename with no path, so this
+    fails because _ParseManifestXml() is looking for local_file in the
+    current directory.
+  -->
+
+  <remote name="q" fetch="https://github.com/thebigq" />
+
+  <!-- *** Removed repos *** -->
+
+  <remove-project name="AOKP/android_device_asus_grouper" />
+  <remove-project name="AOKP/device_samsung_aries-common" />
+  <remove-project name="AOKP/device_samsung_captivatemtd" />
+  <remove-project name="AOKP/device_samsung_crespo" />
+  <remove-project name="AOKP/device_samsung_crespo4g" />
+  <remove-project name="AOKP/android_device_samsung_d2-common" />
+  <remove-project name="AOKP/android_device_samsung_d2tmo" />
+  <remove-project name="AOKP/device_samsung_fascinatemtd" />
+  <remove-project name="AOKP/device_samsung_galaxysmtd" />
+  <remove-project name="AOKP/android_device_samsung_galaxys2-common" />
+  <remove-project name="AOKP/device_samsung_d2vzw" />
+  <remove-project name="AOKP/device_samsung_hercules" />
+  <remove-project name="AOKP/android_device_samsung_n7000" />
+  <remove-project name="AOKP/device_samsung_maguro" />
+  <remove-project name="AOKP/android_device_samsung_msm8660-common" />
+  <remove-project name="AOKP/android_device_samsung_msm8960-common" />
+  <remove-project name="AOKP/device_samsung_toro" />
+  <remove-project name="AOKP/android_device_samsung_toroplus" />
+  <remove-project name="AOKP/device_samsung_tuna" />
+  <remove-project name="AOKP/device_samsung_vibrantmtd" />
+  <remove-project name="AOKP/android_device_samsung_p5100" />
+  <remove-project name="AOKP/android_device_samsung_p5110" />
+  <remove-project name="AOKP/android_device_samsung_p5113" />
+  <remove-project name="AOKP/android_device_samsung_p3100" />
+  <remove-project name="AOKP/android_device_samsung_p3110" />
+  <remove-project name="AOKP/android_device_samsung_p3113" />
+  <remove-project name="AOKP/device_samsung_i9100" />
+  <remove-project name="AOKP/vendor_samsung" />
+  <remove-project name="AOKP/vendor_asus" />
+
+  <!-- *** Replacements from CM *** -->
+
+  <!-- dalvik, webkit, webrtc -->
+  <remove-project name="AOKP/external_webkit" />
+  <project path="external/webkit" name="android_external_webkit" remote="cm" revision="jellybean" />
+  <remvoe-project name="AOKP/external_webrtc" />
+  <project path="external/webrtc" name="android_external_webrtc" remote="cm" revision="jellybean" />
+  <remove-project name="AOKP/platform_dalvik" />
+  <project path="dalvik" name="android_dalvik" remote="cm" revision="jellybean" />
+
+  <!-- omap3 -->
+  <remove-project name="platform/hardware/ti/omap3" />
+  <project path="hardware/ti/omap3" name="android_hardware_ti_omap3" remote="cm" revision="jellybean" />
+
+  <!-- AOKP/AOSP does not have BOARD_WEXT_NO_COMBO_SCAN -->
+  <remove-project name="platform/external/wpa_supplicant_6" />
+  <project path="external/wpa_supplicant_6" name="android_external_wpa_supplicant_6" remote="cm" revision="jellybean" />
+
+  <!-- *** Locally changed repos *** -->
+
+  <remove-project name="AOKP/vendor_aokp" />
+  <project path="vendor/aokp" name="aokp_vendor_aokp" remote="q" revision="jb" />
+
+  <remove-project name="AOKP/frameworks_base" />
+  <project path="frameworks/base" name="aokp_frameworks_base" remote="q" revision="jb" />
+
+  <!-- *** thunderc device and vendor repos *** -->
+
+  <project path="device/lge/thunderc" name="aokp_device_lge_thunderc" remote="q" revision="ics" />
+  <project path="device/lge/VM670" name="aokp_device_lge_VM670" remote="q" revision="ics" />
+  <project path="device/lge/LS670" name="aokp_device_lge_LS670" remote="q" revision="ics" />
+  <project path="device/lge/VS660" name="aokp_device_lge_VS660" remote="q" revision="ics" />
+  <project path="vendor/lge/thunderc" name="android_vendor_lge_thunderc" remote="q" revision="ics" />
+  <project path="vendor/lge/VM670" name="android_vendor_lge_VM670" remote="q" revision="ics" />
+  <project path="vendor/lge/LS670" name="android_vendor_lge_LS670" remote="q" revision="ics" />
+  <project path="vendor/lge/VS660" name="android_vendor_lge_VS660" remote="q" revision="ics" />
+
+  <!-- *** sniper device and vendor repos *** -->
+
+  <project path="device/lge/sniper" name="aokp_device_lge_sniper" remote="q" revision="jb" />
+  <project path="device/lge/LS855" name="aokp_device_lge_LS855" remote="q" revision="jb" />
+  <project path="device/lge/LG855" name="aokp_device_lge_LG855" remote="q" revision="jb" />
+  <project path="device/lge/AS855" name="aokp_device_lge_AS855" remote="q" revision="jb" />
+  <project path="device/lge/VM855" name="aokp_device_lge_VM855" remote="q" revision="jb" />
+  <project path="vendor/lge/sniper" name="android_vendor_lge_sniper" remote="q" revision="jellybean" />
+  <project path="vendor/lge/LS855" name="android_vendor_lge_LS855" remote="q" revision="jellybean" />
+  <project path="vendor/lge/LG855" name="android_vendor_lge_LG855" remote="q" revision="jellybean" />
+  <project path="vendor/lge/AS855" name="android_vendor_lge_AS855" remote="q" revision="jellybean" />
+  <project path="vendor/lge/VM855" name="android_vendor_lge_VM855" remote="q" revision="jellybean" />
+
+  <!-- *** iproj device and vendor repos *** -->
+
+  <project path="device/lge/iproj" name="aokp_device_lge_iproj" remote="q" revision="jellybean" />  
+  <project path="device/lge/i_atnt" name="aokp_device_lge_i_atnt" remote="q" revision="jellybean" />
+  <project path="device/lge/i_vzw" name="aokp_device_lge_i_vzw" remote="q" revision="jellybean" />
+  <project path="vendor/lge/iproj" name="android_vendor_lge_iproj" remote="q" revision="jellybean" />  
+  <project path="vendor/lge/i_atnt" name="android_vendor_lge_i_atnt" remote="q" revision="jellybean" />
+  <project path="vendor/lge/i_vzw" name="android_vendor_lge_i_vzw" remote="q" revision="jellybean" />
+
+</manifest>

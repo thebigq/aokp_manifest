@@ -77,6 +77,10 @@
   <remove-project name="AOKP/frameworks_base" />
   <project path="frameworks/base" name="aokp_frameworks_base" remote="q" revision="jb" />
 
+  <!-- Fixes for sniper glgps -->
+  <remove-project name="platform/external/icu4c" />
+  <project path="external/icu4c" name="android_external_icu4c" remote="q" revision="jellybean" />
+
   <!-- *** thunderc device and vendor repos *** -->
 
   <project path="device/lge/thunderc" name="aokp_device_lge_thunderc" remote="q" revision="ics" />
